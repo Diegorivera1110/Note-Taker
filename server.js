@@ -63,11 +63,10 @@ app.use(express.json());
 //   }
 
 
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
+
 
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}`);
 });
-
-
-// require("./routes/apiRoutes")(app);
-// require("./routes/htmlRoutes")(app);
