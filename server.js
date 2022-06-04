@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/api/notes", (req, res) => {
-  res.json(notesGroup.slice(1));
+  res.json(notesList.slice(1));
 });
 
 app.get("/", (req, res) => {
