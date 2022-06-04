@@ -5,7 +5,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const notesGroup = require("./db/db.json");
+const notesList = require("./db/db.json");
 
 app.use(express.static("public"));
 
@@ -48,12 +48,12 @@ function generateNote(body, noteArray) {
 }
 
 app.post("/api/notes", (req, res) => {
-  const newNote = generateNote(req.body, notesGroup);
+  const newNote = generateNote(req.body, notesList);
   res.json(newNote);
 });
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// require("./routes/apiRoutes")(app);
+// require("./routes/htmlRoutes")(app);
 
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}`);
