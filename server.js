@@ -34,9 +34,11 @@ app.get("*", (req, res) => {
 
 function generateNote(body, noteArray) {
   const newNote = body;
-  if (!Array.isArray(noteArray)) noteArray = [];
+  if (!Array.isArray(noteArray)) 
+  noteArray = [];
 
-  if (noteArray.length === 0) noteArray.push(0);
+  if (noteArray.length === 0)
+   noteArray.push(0);
 
   body.id = noteArray[0];
   noteArray[0]++;
