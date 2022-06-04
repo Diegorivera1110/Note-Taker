@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 
 
 const PORT = process.env.PORT || 3001;
@@ -30,9 +31,27 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+function generateNote(body, noteArray) {
+    const newNote = body;
+    if (!Array.isArray(noteArray))
+    noteArray = [];
 
+    if (noteArray.length === 0)noteArray.push(0);
 
+    body.is = noteArray[0];
+    noteArray[0]++;
 
+    noteArray.push(newNote);
+    fs.writeFileSync(path.join(__dirname, './db/db.json'),
+    JSON.stringify(noteArray, null, 2)
+    );
+    return newNote;
+}
+
+    app.post('/api/notes', (req, res) => {
+        const newNote = generateNote(req.body, notesGroup);
+        res.json(newNote);
+    });
 
 
 app.listen(PORT, () => {
