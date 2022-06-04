@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const uniqid = require('uniqid');
+var uniqid = require('uniqid');
 
 module.exports = (app) => {
     
@@ -10,7 +10,7 @@ module.exports = (app) => {
 
     app.post('/api/notes', (req, res) => {
         let data = fs.readFileSync('db/db.json');
-        data = json.parse(data);
+        data = JSON.parse(data);
         res.json(data);
 
         let note = {
@@ -23,4 +23,4 @@ module.exports = (app) => {
         fs.writeFileSync('db/db.json', JSON.stringify(data));
         res.json(data);
     });
-}
+};
