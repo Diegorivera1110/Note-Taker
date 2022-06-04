@@ -3,5 +3,5 @@ const fs = require('fs');
 
 
 module.exports = (app) => {
-    app.route
+    
 }

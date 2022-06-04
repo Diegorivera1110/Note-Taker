@@ -1,8 +1,8 @@
-const express = require("express");
-const fs = require("fs");
-const path = require("path");
-
 const PORT = process.env.PORT || 3001;
+const path = require("path");
+const fs = require("fs");
+
+const express = require("express");
 const app = express();
 
 const notesList = require("./db/db.json");
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/api/notes", (req, res) => {
-  res.json(notesList.slice(1));
+  res.json(notesLis.slice(1));
 });
 
 app.get("/", (req, res) => {
@@ -56,9 +56,18 @@ app.post("/api/notes", (req, res) => {
   res.json(newNote);
 });
 
-// require("./routes/apiRoutes")(app);
-// require("./routes/htmlRoutes")(app);
+// const deleteNote = (id, notesList) => {
+//   for (let i = 0; i < notesList.length; i++) {
+//     let note = notesList
+//     }
+//   }
+
+
 
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}`);
 });
+
+
+// require("./routes/apiRoutes")(app);
+// require("./routes/htmlRoutes")(app);
